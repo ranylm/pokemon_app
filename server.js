@@ -4,12 +4,17 @@ const jsxengine=require('jsx-view-engine').createEngine()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.set('view engine',jsxengine)
-app.set('view','./views')
+// View Engine Middleware Configure
+const reactViewsEngine = require('jsx-view-engine').createEngine();
+app.engine('jsx', reactViewsEngine);
+// This line tells the render method the default file extension to look for.
+app.set('view engine', 'jsx');
+// This line sets the render method's default location to look for a jsx file to render. Without this line of code we would have to specific the views directory everytime we use the render method
+app.set('views', './views');
 
 
 app.get('/pokemon', (req, res) => {
-  res.send('Index')
+  res.render('Index',{pokemon})
 })
 
 app.get('/', (req, res) => res.send('Welcome to the Pokemon App!'))

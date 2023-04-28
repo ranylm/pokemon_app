@@ -11,8 +11,14 @@ export default class Index extends Component {
       <div style={myStyle}>
         <h1>See All The Pokemon</h1>
         <ul>
-          {pokemon.map((e) => {
-            return <li>{e.name.charAt(0).toUpperCase() + e.name.slice(1)}</li>;
+          {pokemon.map((e, idx) => {
+            return (
+              <li>
+                <a href={`/pokemon/${idx}`}>
+                  {e.name.charAt(0).toUpperCase() + e.name.slice(1)}
+                </a>
+              </li>
+            );
           })}
         </ul>
       </div>

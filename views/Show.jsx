@@ -6,12 +6,8 @@ export default class Show extends Component {
     return (
       <div>
         <h1>Gotta Catch 'Em All</h1>
-        <h2>{pokemon.name}</h2>
-        {pokemon.img === "" ? (
-          <h3>Pokemon has never been captured on camera.</h3>
-        ) : (
-          <img src={`${pokemon.img}.jpg`}></img>
-        )}
+        <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+        <img src={`http://img.pokemondb.net/artwork/${pokemon.name}.jpg`}></img>
         <a href="/pokemon">Back</a>
       </div>
     );
